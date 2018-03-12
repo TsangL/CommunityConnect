@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Home</title>
+		<link rel="stylesheet" href="HomePage.css" type="text/css" href="favicon.ico" >
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+	</head>
+	<body id = body1>
+		<section id=section1 >
+			<header class= "header_fixed">
+			<div id=banner>
+				<img id=logo src= "https://s9.postimg.org/au0c1zrr3/oie_Q3_CNotmv_Atf_T.png" />
+
+				<div id = menuWrap class="dropdown">
+					<button id = menu class="dropbtn">
+						<span class="panel-toggler__line"></span>
+						<span class="panel-toggler__line"></span>
+						<span class="panel-toggler__line"></span>
+					</button>
+					<div class="dropdown-content">
+						<a href="file:///Users/kamronebrahimi/Documents/GitHub/CommunityConnect/HomePage/ProfileCreation.html#">Login/Create Profile</a>
+						<a href="#">Settings</a>
+						<a href="#">Terms</a>
+					</div>
+				</div>
+			</header>
+			</div>
+  <!--<div id=menu>
+  <fieldset class=navigate>
+  <p>
+            <select name="menu" id="navigate">
+                <option value="menu">Menu</option>
+                <option value="create account">Create Account</option>
+                <option value="FAQ">FAQ</option>
+                <option value="About">About</option>
+            </select>
+              </p>
+     </fieldset>
+  </div>
+-->
+		
+			<div id = subwindow>
+				<div id="map"></div>
+					<script>
+					//Site: https://developers.google.com/maps/documentation/javascript/get-api-key
+					//API key: AIzaSyCThVz3ETqcjx0EtyNWvaUiV0UF4xHx5Ag
+
+					var map, address, heatmapData=[];
+					function initMap(){
+						map = map = new google.maps.Map(document.getElementById('map'), {
+										center: {lat: 39.50, lng: -98.35},
+										zoom: 4,
+										mapTypeId: 'terrain'
+						});
+						
+						var geocoder = new google.maps.Geocoder;
+					
+						geocodeAddress(geocoder, map);
+					}
+					heatmap.setMap(map);
+					
+					
+					function geocodeAddress(geocoder, resultsMap) {
+						var listAddress = [ "salem, oregon", "portland, oregon", "boise, idaho", "eugene, oregon", "corvalis, oregon"];
+						
+						//for loop to run through each element in the array
+						for(index = 0; index < listAddress.length; ++index){
+						
+							//define address and create temps for data
+							var address = listAddress[index], loc=[], lat='', lng='', locationEach='';
+								
+							geocoder.geocode({'address': address}, function(results, status) {
+								if (status === 'OK') {
+									loc[0]=results[0].geometry.location.lat();      //add location of the lat coordinates
+									loc[1]=results[0].geometry.location.lng();      //add location of the lng coordinates
+									lat = parseFloat(loc[0]);                       //add location of the lat in string form
+									lng = parseFloat(loc[1]);                       //add location of the lng in string form
+									locationEach = lat + ', ' + lng;                //combine into a single location string that works with heat map
+									
+									heatmapData.push( new google.maps.LatLng(lat, lng)); //push new loc onto the heatmapData array
+								} else {
+									alert('Geocode was not successful for the following reason: ' + status);
+								}
+								if (heatmapData.length == listAddress.length ) {
+								
+									heatmap = new google.maps.visualization.HeatmapLayer({
+										data: heatmapData,
+										map: map,
+										radius: 20
+									});	
+									
+								}
+							});
+						}
+					}
+					
+					</script>
+
+					<script async defer
+						src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCThVz3ETqcjx0EtyNWvaUiV0UF4xHx5Ag&libraries=visualization&callback=initMap">
+					</script>
+					<header id=mapHeader > See where people are using CommunityConnect...</header>
+			</div>
+		</section>
+
+		<section id=section2>
+			<header class= "home_page_field"> About CommunityConnect: </header>
+			<div id=aboutCC>
+				<p>We, the creators of community connect, strive to help people from different nationality's connect with others from the same race. In order to facilitate this, we have created an easy to use social media web interface to connect YOU to people in near your location. While we designed this to be for minorities, everyone is welcome to join the CC society.  </p>
+			</div>
+		</section>
+
+		<section id=section3>
+			<header class= "home_page_field"> How To Use CommunityConnect: </header>
+			<div id=howTo>
+				<p>Using community connect is a very simple process. These 3 easy steps are as simple as: </p>
+				<ol>
+					<li>Creating a profile for yourself by clicking <a href="">here</a></li>
+					<br/>
+					<li>After creating your profile, log in <a href="">here</a></li>
+					<br/>
+					<li>Find your friends using the "search" button
+					
+				</ol>
+			</div>
+		</section>
+		<script src="HomePage.js"></script>
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsLRNstIbl5TVv1rpBitRWbk8tSH7gjmI&callback=initMap"> </script>
+<!-- content here -->
+	</body>
+</html>

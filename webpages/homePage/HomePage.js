@@ -35,7 +35,7 @@
   }
 
   function eqfeed_callback(results) {
-  map.data.addGeoJson(results);
+	map.data.addGeoJson(results);
   }
 
 /*
